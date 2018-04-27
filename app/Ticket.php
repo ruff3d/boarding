@@ -7,106 +7,30 @@ namespace App;
  * Class Ticket
  * @package App
  */
-class Ticket {
+abstract class Ticket {
+
 
 	/**
 	 * @var string
 	 */
-	private $number;
+	protected $from;
 
 	/**
 	 * @var string
 	 */
-	private $from;
+	protected $to;
 
 	/**
-	 * @var string
-	 */
-	private $to;
-
-	/**
-	 * @var string
-	 */
-	private $type;
-
-	/**
-	 * @var string
-	 */
-	private $seat;
-
-	/**
-	 * @param string $number
 	 * @param string $from
 	 * @param string $to
-	 * @param string $type
-	 * @param string $seat
 	 */
 
-	public function __construct(string $number, string $from, string $to, string $type, string $seat)
+	public function __construct(string $from, string $to)
 	{
-		$this->number = $number;
 		$this->from   = $from;
 		$this->to     = $to;
-		$this->type   = $type;
-		$this->seat   = $seat;
 	}
 
-	public function getNumber(): string
-	{
-		return $this->number;
-	}
-
-	/**
-	 * @param string $number
-	 *
-	 * @return Ticket
-	 */
-	public function setNumber(string $number): Ticket
-	{
-		$this->number = $number;
-
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getType(): string
-	{
-		return $this->type;
-	}
-
-	/**
-	 * @param string $type
-	 *
-	 * @return Ticket
-	 */
-	public function setType(string $type): Ticket
-	{
-		$this->type = $type;
-
-		return $this;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getSeat(): string
-	{
-		return $this->seat;
-	}
-
-	/**
-	 * @param string $seat
-	 *
-	 * @return Ticket
-	 */
-	public function setSeat(string $seat): Ticket
-	{
-		$this->seat = $seat;
-
-		return $this;
-	}
 
 	/**
 	 * @return string
@@ -147,6 +71,8 @@ class Ticket {
 
 		return $this;
 	}
+
+	abstract public function render(): string;
 
 
 }
