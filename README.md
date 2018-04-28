@@ -1,0 +1,6 @@
+# boarding
+
+# Installation
+```
+composer install
+```
