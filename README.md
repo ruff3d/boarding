@@ -9,7 +9,7 @@ composer install
 composer run-script test
 ```
 # Using
-```
+```php
 <?php
 
 use App\{Boarding, TrainTicket, FlightTicket, BusTicket};
@@ -29,7 +29,7 @@ echo $boarding->renderList();
 ```
 # Extending
 If you want add new type on tickets than just extend abstract class Ticket 
-```
+```php
 <?php
 
 namespace App;
