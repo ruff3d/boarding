@@ -16,6 +16,8 @@ class Boarding {
 	 */
 	private $list;
 
+	private $reorderedList;
+
 
 	/**
 	 * Boarding constructor.
@@ -51,7 +53,7 @@ class Boarding {
 	 * @return array
 	 * @throws \Exception
 	 */
-	public function reorder(): array
+	private function reorder(): array
 	{
 		$fromToList = $this->getFromToList();
 
@@ -64,20 +66,39 @@ class Boarding {
 
 	/**
 	 * @param Ticket $ticket
-	 * @param        $fromList
+	 * @param array  $fromList
+	 *
+	 * @param array  $list
 	 *
 	 * @return array
 	 */
-	public static function getNext(Ticket $ticket, &$fromList)
+	private static function getNext(Ticket $ticket, array &$fromList, &$list = [])
 	{
-		static $list;
 		$list[] = $ticket;
 		if (array_key_exists($ticket->getTo(),$fromList)){
 			$ticketNext = $fromList[$ticket->getTo()];
 			unset($fromList[$ticket->getTo()]);
-			static::getNext($ticketNext,$fromList);
+			static::getNext($ticketNext,$fromList,$list);
 		}
 		return $list;
+	}
+
+	/**
+	 * @return string
+	 * @throws \Exception
+	 */
+	public function renderList(): string
+	{
+		return join(PHP_EOL, $this->getReorderedList()).PHP_EOL
+		       ."You have arrived at your final destination.";
+	}
+
+	/**
+	 * @return array
+	 * @throws \Exception
+	 */
+	public function getReorderedList() {
+		return $this->reorderedList ?? $this->reorder();
 	}
 
 }
