@@ -9,10 +9,14 @@ composer install
 composer run-script test
 ```
 # Using
+```bash
+composer require ruff3d/boarding
+```
+
 ```php
 <?php
 
-use App\{Boarding, TrainTicket, FlightTicket, BusTicket};
+use BoardingCards\{Boarding, TrainTicket, FlightTicket, BusTicket};
 
 // Add unsorted Tickets to Boarding
 $boarding = new Boarding(
@@ -22,7 +26,7 @@ $boarding = new Boarding(
 	new TrainTicket('Madrid', 'Barcelona', '78A', '45B')
        );
 // Get ordered Tickets list         
-$orderedList = $boarding->getOrderedList();
+$orderedList = $boarding->getReorderedList();
 
 // Render List Items
 echo $boarding->renderList();
@@ -32,13 +36,13 @@ If you want add new ticket type than just extend abstract class Ticket
 ```php
 <?php
 
-namespace App;
+namespace BoardingCards;
 
 class WalkTicket extends Ticket {
 /**
 * @var bool
 */
-private $alone
+private $alone;
 
 // extending default constructor
  public function __construct(string $from, string $to, bool $alone)
