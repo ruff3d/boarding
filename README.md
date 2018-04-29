@@ -1,11 +1,11 @@
 # boarding
 
 # Installation
-```
+```bash
 composer install
 ```
 # Run tests
-```
+```bash
 composer run-script test
 ```
 # Using
