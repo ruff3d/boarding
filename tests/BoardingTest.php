@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use App\{Boarding, TrainTicket, FlightTicket, BusTicket};
+use BoardingCards\{Boarding, TrainTicket, FlightTicket, BusTicket};
 
 final class BoardingTest extends TestCase {
 
@@ -50,10 +50,10 @@ final class BoardingTest extends TestCase {
 	public function listToStringProvider()
 	{
 		return [[[ // unsorted list
-	new FlightTicket('Stockholm', 'New York JFK', 'SK22','22','7B'),
-	new FlightTicket('Gerona Airport', 'Stockholm', 'SK455', '45B', '3A', '344'),
-	new BusTicket('Barcelona', 'Gerona Airport'),
-	new TrainTicket('Madrid', 'Barcelona', '78A', '45B'),
+			new FlightTicket('Stockholm', 'New York JFK', 'SK22','22','7B'),
+			new FlightTicket('Gerona Airport', 'Stockholm', 'SK455', '45B', '3A', '344'),
+			new BusTicket('Barcelona', 'Gerona Airport'),
+			new TrainTicket('Madrid', 'Barcelona', '78A', '45B'),
 				],
 			// expected string
 "1. Take train 78A from Madrid to Barcelona. Sit in seat 45B.
