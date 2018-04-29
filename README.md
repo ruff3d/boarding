@@ -28,7 +28,7 @@ $orderedList = $boarding->getOrderedList();
 echo $boarding->renderList();
 ```
 # Extending
-If you want add new type on tickets than just extend abstract class Ticket 
+If you want add new ticket type than just extend abstract class Ticket 
 ```php
 <?php
 
