@@ -1,7 +1,7 @@
 {
     "name": "ruff3d/boarding",
     "license": "MIT",
-    "description": "A short description of what your package does",
+    "description": "Sorting boarding cards and layout list",
     "require": {
         "php": ">=7.1"
     },
