@@ -1,7 +1,7 @@
 {
     "name": "ruff3d/boarding",
     "license": "MIT",
-    "description": "Sorting boarding cards and layout list",
+    "description": "Sort boarding cards and layout list",
     "require": {
         "php": ">=7.1"
     },
