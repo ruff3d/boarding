@@ -8,6 +8,10 @@ namespace App;
  * Class Boarding
  * @package App
  */
+/**
+ * Class Boarding
+ * @package App
+ */
 class Boarding {
 
 
@@ -16,6 +20,9 @@ class Boarding {
 	 */
 	private $list;
 
+	/**
+	 * @var Ticket[]
+	 */
 	private $reorderedList;
 
 
@@ -41,6 +48,11 @@ class Boarding {
 		});
 	}
 
+	/**
+	 * @param $fromToList
+	 *
+	 * @return null|string
+	 */
 	private static function startItem($fromToList): ?string {
 		foreach ($fromToList['from'] as $key => $value){
 			if (!array_key_exists($key, $fromToList['to'])){
@@ -61,7 +73,9 @@ class Boarding {
 
 		if (!$start) throw new \Exception("We don't know where you should start from");
 
-		return static::getNext($fromToList['from'][$start],$fromToList['from']);
+		return static::getNext($fromToList['from'][$start],
+			$fromToList['from'],
+			$this->reorderedList);
 	}
 
 	/**
@@ -89,8 +103,13 @@ class Boarding {
 	 */
 	public function renderList(): string
 	{
-		return join(PHP_EOL, $this->getReorderedList()).PHP_EOL
-		       ."You have arrived at your final destination.";
+		$orderedList = $this->getReorderedList();
+		array_push( $orderedList, "You have arrived at your final destination.");
+		$list='';
+		foreach ($orderedList as $i => $t){
+			$list.= ($i+1) . '. ' . $t . PHP_EOL;
+		}
+		return $list;
 	}
 
 	/**
